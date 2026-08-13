@@ -1,6 +1,17 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import { Cartitem } from "../types";
 
-export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, cleanCart, isEmpty, cartTotal }) {
+interface HeaderProps {
+    cart: Cartitem[];
+    removeFromCart: (id: Cartitem["id"]) => void;
+    increaseQuantity: (id: Cartitem["id"]) => void;
+    decreaseQuantity: (id: Cartitem["id"]) => void;
+    cleanCart: () => void;
+    isEmpty: boolean;
+    cartTotal: number;
+}
+
+export default function Header({ cart, removeFromCart, increaseQuantity, decreaseQuantity, cleanCart, isEmpty, cartTotal } : HeaderProps) {
 
     const [cartIsOpen, setCartIsOpen] = useState(false);
     
